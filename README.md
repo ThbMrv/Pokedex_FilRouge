@@ -42,7 +42,7 @@ cd Pokedex
 npm install
 ```
 
-## Lancer le projet en développement
+## Lancer le projet
 
 ```bash
 npm run build
