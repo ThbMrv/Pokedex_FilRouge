@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# Pokedex NextJS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est un Pokédex moderne développé avec Next.js, React, TypeScript et Material UI. Il permet de rechercher, filtrer et consulter les détails des Pokémon, avec support multilingue (FR/EN), filtres par type, et navigation fluide.
 
-Currently, two official plugins are available:
+## Fonctionnalités principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Page d’accueil avec liste des Pokémon
+- Recherche dynamique/par nom (searchbar)
+- Filtre par type
+- Détail de chaque Pokémon (page dédiée)
+- Naviguer d'un pokemon suivant/précédent depuis la page détail du pokemon
+- Support multilingue (français/anglais)
+- Persistance de la langue et de la recherche dans l’URL
+- Page 404 personnalisée
+- Responsive et design Material UI
+- Tests unitaires sur tous les composants principaux
 
-## React Compiler
+## Prérequis
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js >= 18
+- npm >= 9
 
-## Expanding the ESLint configuration
+## Routing
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Le projet utilise le routeur natif de Next.js (App Router) et non react-router.
+Lors du passage obligatoire du projet sous Next.js, j’ai compris que le routeur devait également être celui de Next, et j’ai donc adapté l’architecture en conséquence avant le rendu.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Je viens de m'en rendre compte en lisant le barème avant de le rendre ^^
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Cloner le projet**
+
+```bash
+git clone url
+cd Pokedex
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Installer les dépendances**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+## Lancer le projet en développement
+
+```bash
+npm run build
+npm start
+```
+
+Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
+
+## Lancer les tests unitaires
+
+```bash
+npm test
+```
+
+## Structure du projet
+
+- `app/` : Pages Next.js (accueil, détail, 404)
+- `app/src/components/` : Composants React (Header, Logo, LanguageSelection, PokemonCard, etc.)
+- `app/src/contexts/` : Contexte pour la langue
+- `app/src/data/` : Données JSON (pokémons, types)
+- `app/src/types/` : Types TypeScript
